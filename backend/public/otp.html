@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="responsive.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="div1">
+        <br><br>
+        <h>OTP</h>
+        <br><br>
+        <form onsubmit="otpValidate(event)">
+            <div>
+                <label for="otp">Enter OTP</label><br>
+                <span id="icon"><i class="fa-solid fa-key"></i></span>
+                <input type="number" id="otp">
+                <br>
+                <span id="n6"></span>
+            </div>
+            <button type="submit" id="otpbtn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

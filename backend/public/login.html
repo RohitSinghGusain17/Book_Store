@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="responsive.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="div1">
+    <h>Log in</h>
+    <form id="loginform" onsubmit="return loginValidate(event)" action="/login" method="POST">
+        <div>
+            <label for="email">Email</label><br>
+            <span id="icon"><i class="fa-solid fa-envelope"></i></span>
+            <input type="mail" id="mail" name="email">
+            <br>
+            <span id="n1"></span>
+        </div>
+        <div>
+            <label for="pass">Password</label><br>
+            <span id="icon"><i class="fa-solid fa-lock"></i></span>
+            <input type="password" id="pass" name="pass">
+            <br>
+            <span id="n2"></span>
+        </div>
+        <div id="forgetpass">
+        <a href="forgetpass.html">Forget password?</a>
+        </div>
+        <button type="submit" id="btn">Login</button>
+    </form>
+    <p>Don't have an account?<a href="signup.html"> Register</a></p>
+</div>
+<script></script>
+</body>
+</html>
