@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #cartItems {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="back-link">
+        <a href="index.html">&larr; Back to Home</a>
+    </div>
+    <div id="cartItems">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cartItemsContainer = document.getElementById("cartItems");
+            const storedCartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+            if (storedCartItems.length > 0) {
+                storedCartItems.forEach(item => {
+                    const { name, price } = item;
+                    const cartItemDiv = document.createElement("div");
+                    cartItemDiv.classList.add("cart-item");
+                    cartItemDiv.innerHTML = `
+                        <div class="item-details">
+                            <h4>${name}</h4>
+                            <p>${price}</p>
+                        </div>
+                        <button class="remove-btn">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItemDiv);
+                });
+
+                const removeButtons = document.querySelectorAll(".remove-btn");
+                removeButtons.forEach(button => {
+                    button.addEventListener("click", function() {
+                        const itemIndex = Array.from(removeButtons).indexOf(button);
+                        storedCartItems.splice(itemIndex, 1);
+                        sessionStorage.setItem("cartItems", JSON.stringify(storedCartItems));
+                        cartItemsContainer.removeChild(button.parentElement);
+                    });
+                });
+            } else {
+                cartItemsContainer.innerHTML = "<p>No items in the cart</p>";
+            }
+        });
+    </script>
+</body>
+</html>
